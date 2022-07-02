@@ -1,34 +1,39 @@
 import * as React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Alert, TouchableOpacity} from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Alert, TouchableOpacity } from 'react-native';
 import MenuMain from '../../Menu';
 import axios from 'axios'
+import ProdutoProvider, { ContextProduto } from '../../context/ProdutoContext';
+import PageProduto from '../Produto';
 
-const Item = ({ title, img, valor, categoria }) => (
-  <TouchableOpacity onPress={() => console.log('click')} style={styles.item}>
-    <Image style={{height: 200, width: 200}} source={{uri: img}}></Image>
-    <Text style={styles.title}>{title}</Text>
-    <Text style={styles.title}>R$ {valor}</Text>
-    <Text style={styles.title}>{categoria}</Text>
-  </TouchableOpacity>
-);
+const Home = ({ navigation }) => {
 
-const Home = () => {
+  const {produto, getProduto, id} = React.useContext(ContextProduto)
+  console.log(produto)
 
-  const [produto, setProduto] = React.useState([])
-
-  const getProduto = async () =>{
-    const {data} = await axios.get("http://localhost:8080/produtos")
-    setProduto(data)
-    console.log(produto)
+  const irParaProduto = () => {
+    navigation.navigate("PagProduto",{
+      produto: produto
+    })
   }
 
   React.useEffect(() => {
     getProduto();
   }, []);
 
+  const Item = ({ title, img, valor, categoria, id,produto}) => (
+    <TouchableOpacity value={produto} onPress={() => navigation.navigate("PagProduto",{
+      produto: produto
+    })} style={styles.item}>
+      <Image style={{ height: 200, width: 200 }} source={{ uri: img }}></Image>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title}>R$ {valor}</Text>
+      <Text style={styles.title}>{categoria}</Text>
+    </TouchableOpacity>
+  );
+
   const renderItem = ({ item }) => (
     <>
-      <Item title={item.nome} img={item.foto} valor={item.valorUnitario} categoria={item.categoria.nome}/>
+      <Item produto={item} id={item.id} title={item.nome} img={item.foto} valor={item.valorUnitario} categoria={item.categoria.nome} />
     </>
   );
 
@@ -39,7 +44,6 @@ const Home = () => {
         <FlatList
           data={produto}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
         />
       </SafeAreaView>
     </>

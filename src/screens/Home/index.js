@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Alert } from 'react-native';
 import MenuMain from '../../Menu';
 import axios from 'axios'
 
 const Item = ({ title, img, valor, categoria }) => (
-  <View style={styles.item}>
+  <View style={styles.item} onPress={() => Alert.alert("click")}>
     <Image style={{height: 200, width: 200}} source={{uri: img}}></Image>
     <Text style={styles.title}>{title}</Text>
     <Text style={styles.title}>R$ {valor}</Text>

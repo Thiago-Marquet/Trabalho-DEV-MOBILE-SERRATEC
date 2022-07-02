@@ -8,10 +8,8 @@ import TreinoProvider from "./src/context/TreinoContext";
 const App = () => {
   return (
     <AuthProvider>
-      <TreinoProvider>
         <StatusBar />
         <Routes />
-      </TreinoProvider>
     </AuthProvider>
   );
 };

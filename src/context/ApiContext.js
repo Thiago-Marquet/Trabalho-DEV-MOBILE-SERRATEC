@@ -6,7 +6,7 @@ export const ApiContext = createContext({})
 const ApiProvider = ({children}) =>{
 
     const [produto, setProduto] = useState([])
-    const [categoria, setCategoria] = useState([])
+    const [categorias, setCategorias] = useState([])
 
 
     const getProduto = async () => {
@@ -16,11 +16,11 @@ const ApiProvider = ({children}) =>{
 
     const getCategoria = async () =>{
         const { data } = await api.get("/categorias")
-        setCategoria(data)
+        setCategorias(data)
     }
 
     return (
-        <ApiContext.Provider value={{produto, getProduto, categoria, getCategoria}}>
+        <ApiContext.Provider value={{produto, getProduto, categorias, getCategoria}}>
             {children}
         </ApiContext.Provider>
     )

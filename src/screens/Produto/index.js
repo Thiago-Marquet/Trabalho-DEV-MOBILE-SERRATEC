@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, StatusBar,Modal ,Image, Pressable, Button, Text, Alert} from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
-import UpdateProduto from '../../Components/UpdateProduto';
+import UpdateProduto from '../../Components/UpdateProduto/UpdateProduto';
 
 const PageProduto = ({ route, navigation }) => {
 

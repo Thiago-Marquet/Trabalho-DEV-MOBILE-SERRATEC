@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { TextInput, SafeAreaView, View, FlatList, StyleSheet, StatusBar,Modal ,Image, Pressable, Button, Text, Alert} from 'react-native';
-import api from '../services/api';
+import api from '../../services/api';
+import SelectDropdown from 'react-native-select-dropdown';
+import { ApiContext } from '../../context/ApiContext';
 
 const UpdateProduto = (props) => {
-    
+
+    const{categorias, getCategoria} = React.useContext(ApiContext)
+
     const [categoria, setCategoria] = React.useState('');
     const [nomeProduto, setNomeProduto] = React.useState('');
     const [valor, setValor] = React.useState('');
@@ -41,10 +45,11 @@ const UpdateProduto = (props) => {
         setFoto("")
         
         alert("Produto atualizado com sucesso")
-        window.location.reload()
+        
     }
 
     React.useEffect(() => {
+        getCategoria()
         setId(props.id);
         setNomeProduto(props.nome);
         setValor(props.valor);
@@ -90,6 +95,24 @@ const UpdateProduto = (props) => {
                             padding: 5}}
                         >
                         </TextInput>
+                        <SelectDropdown
+                            buttonStyle={{width:300, backgroundColor:'#181818'}}
+                            buttonTextStyle={{color:'#ffff'}}
+                            defaultValue={categoria}
+                            defaultButtonText="Selecione A Categoria"
+                            data={categorias}
+                            onSelect={(selectedItem) => {
+                                console.log(selectedItem.nome)
+                                setCategoria(selectedItem.nome)
+                            }}
+                            buttonTextAfterSelection={(selectedItem) => {
+                                return selectedItem.nome
+                            }}
+                            rowTextForSelection={(item) => {
+                                return item.nome
+                            }}
+                        >
+                        </SelectDropdown>
                         
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
@@ -99,7 +122,7 @@ const UpdateProduto = (props) => {
                         </Pressable>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}
+                            onPress={salvarProduto}
                         >
                             <Text style={styles.textStyle}>Salvar</Text>
                         </Pressable>

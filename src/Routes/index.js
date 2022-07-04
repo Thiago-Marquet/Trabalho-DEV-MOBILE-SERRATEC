@@ -33,7 +33,7 @@ const Routes = () => {
 
   return (
     <NavigationContainer>
-      {!!user ? <RotasPrivadas/> : <RotasPublicas/>}
+      {!!user ? <MyDrawer/> : <RotasPublicas/>}
     </NavigationContainer>
   );
 };

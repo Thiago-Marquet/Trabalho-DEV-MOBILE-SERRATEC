@@ -3,10 +3,12 @@ import { TextInput, SafeAreaView, View, FlatList, StyleSheet, StatusBar,Modal ,I
 import api from '../../services/api';
 import SelectDropdown from 'react-native-select-dropdown';
 import { ApiContext } from '../../context/ApiContext';
+import RNRestart from 'react-native-restart';
+
 
 const UpdateProduto = (props) => {
 
-    const{categorias, getCategoria} = React.useContext(ApiContext)
+    const{getProduto,categorias, getCategoria} = React.useContext(ApiContext)
 
     const [categoria, setCategoria] = React.useState('');
     const [nomeProduto, setNomeProduto] = React.useState('');
@@ -14,7 +16,8 @@ const UpdateProduto = (props) => {
     const [foto, setFoto] = React.useState('');
     const [id, setId] = React.useState(props.id);
     const [produto, setProduto] = React.useState([]);
-    console.log(valor)
+    const [atualizado, setAtualizado] = React.useState(false)
+    
     //MODAL---
     const [modalVisible, setModalVisible] = React.useState(false);
     //--------
@@ -40,12 +43,9 @@ const UpdateProduto = (props) => {
         })
     
         setProduto(produtoEditado)
-        setNomeProduto("")
-        setValor("")
-        setFoto("")
+        console.log(produtoEditado)
         
         alert("Produto atualizado com sucesso")
-        
     }
 
     React.useEffect(() => {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 100,
+        marginTop:65,
     },
     modalView: {
         margin: 20,

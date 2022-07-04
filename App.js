@@ -3,16 +3,15 @@ import React from "react";
 import { StatusBar } from "react-native";
 import AuthProvider from "./src/context/AuthContext";
 import Routes from "./src/Routes";
-import TreinoProvider from "./src/context/TreinoContext";
-import ProdutoProvider from "./src/context/ProdutoContext";
+import ApiProvider from "./src/context/ApiContext";
 
 const App = () => {
   return (
     <AuthProvider>
-      <ProdutoProvider>
+      <ApiProvider>
         <StatusBar />
         <Routes />
-      </ProdutoProvider>
+      </ApiProvider>
     </AuthProvider>
   );
 };

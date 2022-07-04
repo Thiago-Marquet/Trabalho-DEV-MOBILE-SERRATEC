@@ -5,6 +5,7 @@ import RotasPrivadas from "./RotasPrivadas";
 import RotasPublicas from "./RotasPublicas";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator, View } from "react-native";
+import MyDrawer from "./Drawer";
 
 const Routes = () => {
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
@@ -32,7 +33,7 @@ const Routes = () => {
 
   return (
     <NavigationContainer>
-      {!!user ? <RotasPrivadas /> : <RotasPublicas />}
+      {!!user ? <RotasPrivadas/> : <RotasPublicas/>}
     </NavigationContainer>
   );
 };

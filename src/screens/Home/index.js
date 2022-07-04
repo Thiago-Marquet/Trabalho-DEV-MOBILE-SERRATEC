@@ -1,27 +1,18 @@
 import * as React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, Alert, TouchableOpacity } from 'react-native';
-import MenuMain from '../../Menu';
-import axios from 'axios'
-import ProdutoProvider, { ContextProduto } from '../../context/ProdutoContext';
-import PageProduto from '../Produto';
+import { SafeAreaView, FlatList, StyleSheet, Text, StatusBar, Image, TouchableOpacity } from 'react-native';
+import  {ApiContext}  from '../../context/ApiContext';
+
 
 const Home = ({ navigation }) => {
 
-  const {produto, getProduto, id} = React.useContext(ContextProduto)
-  console.log(produto)
-
-  const irParaProduto = () => {
-    navigation.navigate("PagProduto",{
-      produto: produto
-    })
-  }
+  const {produto, getProduto} = React.useContext(ApiContext)
 
   React.useEffect(() => {
     getProduto();
   }, []);
 
-  const Item = ({ title, img, valor, categoria, id,produto}) => (
-    <TouchableOpacity value={produto} onPress={() => navigation.navigate("PagProduto",{
+  const Item = ({ title, img, valor, categoria, produto}) => (
+    <TouchableOpacity value={produto} onPress={() => navigation.navigate("Produto",{
       produto: produto
     })} style={styles.item}>
       <Image style={{ height: 200, width: 200 }} source={{ uri: img }}></Image>
@@ -33,13 +24,12 @@ const Home = ({ navigation }) => {
 
   const renderItem = ({ item }) => (
     <>
-      <Item produto={item} id={item.id} title={item.nome} img={item.foto} valor={item.valorUnitario} categoria={item.categoria.nome} />
+      <Item produto={item} title={item.nome} img={item.foto} valor={item.valorUnitario} categoria={item.categoria.nome} />
     </>
   );
 
   return (
     <>
-      {/* <MenuMain/> */}
       <SafeAreaView style={styles.container}>
         <FlatList
           data={produto}

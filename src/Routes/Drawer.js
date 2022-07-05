@@ -25,7 +25,7 @@ const MyDrawer = () => {
           ()=> {
             AsyncStorage.removeItem('@Admin:user')
             AsyncStorage.removeItem('@Admin:token')
-            setUser(false);
+            setUser('');
           }
         }/>  
       </DrawerContentScrollView>

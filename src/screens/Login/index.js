@@ -1,20 +1,22 @@
-import { KeyboardAvoidingView,View,Text,Image,TextInput,TouchableOpacity,Animated,Keyboard} from "react-native";
+import { KeyboardAvoidingView,View,Text,Image,TextInput,TouchableOpacity,Animated,Keyboard, Alert} from "react-native";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext} from "../../context/AuthContext";
 import styles from '../Login/styles'
+import { login } from "../../services/auth";
 
 const Login = () => {
 
-  const{user, signIn} = useContext(AuthContext)
+  const{signIn} = useContext(AuthContext)
 
   const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
-  const handleEntrar = () => {
+  const verificaLogin = async () => {
+    const { user } = await login();
+    if(user.email !== email || user.pass !== senha){
+      return Alert.alert("Email ou senha incorretos")
+    }
     signIn();
-  };
-
-  const verificaLogin = () => {
-
   }
 
 
@@ -44,10 +46,11 @@ const Login = () => {
             autoCompleteType="password"
             autoCorrect={false}
             secureTextEntry={true}
-            onChangeText={() => {}}
+            value={senha}
+            onChangeText={setSenha}
           />
 
-          <TouchableOpacity onPress={handleEntrar}style={styles.buttonSubmit}>
+          <TouchableOpacity onPress={verificaLogin}style={styles.buttonSubmit}>
             <Text style={styles.submitText}>Acessar</Text>
           </TouchableOpacity>
         </View>

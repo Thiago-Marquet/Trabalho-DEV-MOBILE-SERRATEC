@@ -5,6 +5,7 @@ export const login = () => {
         user: {
           name: "nome",
           email: "email@gmail.com",
+          pass: "123"
         },
         token: "skldjfdsjklh23962579oashlasflhfl20382fslkdfskdf",
       });

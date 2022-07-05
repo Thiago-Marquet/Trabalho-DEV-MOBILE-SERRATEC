@@ -51,7 +51,7 @@ const CadastroProduto = ({navigation}) =>{
 
     return(
         <View style={{}}>
-            <Image source={ foto ? {uri: foto} : null} style={{ height: 250, width: 250 }} />
+            <Image source={ foto ? {uri: foto} : null} style={{ height: 200, width: 200 }} />
             <TextInput placeholder='Nome do Produto' defaultValue={nomeProduto} onChangeText={setNomeProduto}></TextInput>
             <TextInput keyboardType='numeric' defaultValue={valor} onChangeText={setValor} placeholder='Valor do produto'></TextInput>
             <TextInput placeholder='Foto URL' defaultValue={foto} onChangeText={setFoto}></TextInput>

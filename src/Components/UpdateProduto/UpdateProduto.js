@@ -8,7 +8,7 @@ import RNRestart from 'react-native-restart';
 
 const UpdateProduto = (props) => {
 
-    const{getProduto,categorias, getCategoria} = React.useContext(ApiContext)
+    const {categorias, getCategoria} = React.useContext(ApiContext)
 
     const [categoria, setCategoria] = React.useState('');
     const [nomeProduto, setNomeProduto] = React.useState('');
@@ -22,6 +22,13 @@ const UpdateProduto = (props) => {
     //--------
 
     const salvarProduto = async() => {
+        if (nomeProduto === "" || valor === "" || foto === "" || categoria === "") {
+            return Alert.alert('Existem campos inválidos')
+        }
+        if(isNaN(valor)){
+            return Alert.alert('O valor do produto não está em formato válido');
+        }
+        
         const produtoData = {
             id: id,
             nome: nomeProduto,
@@ -81,6 +88,7 @@ const UpdateProduto = (props) => {
                             padding: 5}}>
                         </TextInput>
                         <TextInput
+                            defaultValue={valor.toString()}
                             onChangeText={setValor}
                             keyboardType='numeric'
                             style={{backgroundColor: 'white', 

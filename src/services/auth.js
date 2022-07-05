@@ -3,8 +3,8 @@ export const login = () => {
     setTimeout(() => {
       resolve({
         user: {
-          name: "João Felipe",
-          email: "brjoaof@gmail.com",
+          name: "nome",
+          email: "email@gmail.com",
         },
         token: "skldjfdsjklh23962579oashlasflhfl20382fslkdfskdf",
       });

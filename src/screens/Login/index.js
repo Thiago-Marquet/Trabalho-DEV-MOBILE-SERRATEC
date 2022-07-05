@@ -1,6 +1,7 @@
-import { View, Text, Button, TextInput } from "react-native";
+import { KeyboardAvoidingView,View,Text,Image,TextInput,TouchableOpacity,Animated,Keyboard} from "react-native";
 import { useContext, useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
+import styles from '../Login/styles'
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -10,26 +11,42 @@ const Login = () => {
     signIn();
   };
 
+
   return (
-    <View style={{ flex: 1 }}>
-      <Text style={{ textAlign: "center", fontSize: 100 }}>Login</Text>
-      <TextInput
-        value={info}
-        onChangeText={setInfo}
-        placeholder="Digite Seu Nome"
-        style={{
-          borderColor: "black",
-          borderBottomWidth: 2,
-          marginBottom: 20,
-          marginTop: 20,
-          padding: 10,
-          width: "80%",
-          alignSelf: "center",
-          textAlign: "center",
-        }}
-      />
-      <Button title="ENTRAR" onPress={handleEntrar} />
-    </View>
+    <>
+      <View style={styles.container}>
+        <View style={styles.containerLogo}>
+          
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            autoCapitalize="none"
+            autoCompleteType="email"
+            autoCorrect={false}
+            value={info}
+            onChangeText={setInfo}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Senha"
+            //keyboardType="visible-password"
+            textContentType="password"
+            autoCapitalize="none"
+            autoCompleteType="password"
+            autoCorrect={false}
+            secureTextEntry={true}
+            onChangeText={() => {}}
+          />
+
+          <TouchableOpacity onPress={handleEntrar}style={styles.buttonSubmit}>
+            <Text style={styles.submitText}>Acessar</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </>
   );
 };
 

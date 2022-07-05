@@ -17,8 +17,8 @@ const AuthProvider = ({ children }) => {
       setUser(user);
       //para JWT
       api.defaults.headers["Authorization"] = `Bearer ${token}`;
-      await AsyncStorage.setItem("@Cartas:user", JSON.stringify(user));
-      await AsyncStorage.setItem("@Cartas:token", token);
+      await AsyncStorage.setItem("@Admin:user", JSON.stringify(user));
+      await AsyncStorage.setItem("@Admin:token", token);
     }
   };
 

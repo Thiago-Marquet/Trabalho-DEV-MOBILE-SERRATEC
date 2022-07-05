@@ -6,7 +6,7 @@ import { ApiContext } from '../../context/ApiContext';
 import RNRestart from 'react-native-restart';
 
 
-const UpdateProduto = (props) => {
+const UpdateProduto = (props,{navigation}) => {
 
     const{getProduto,categorias, getCategoria} = React.useContext(ApiContext)
 
@@ -16,7 +16,6 @@ const UpdateProduto = (props) => {
     const [foto, setFoto] = React.useState('');
     const [id, setId] = React.useState(props.id);
     const [produto, setProduto] = React.useState([]);
-    const [atualizado, setAtualizado] = React.useState(false)
     
     //MODAL---
     const [modalVisible, setModalVisible] = React.useState(false);
@@ -46,6 +45,7 @@ const UpdateProduto = (props) => {
         console.log(produtoEditado)
         
         alert("Produto atualizado com sucesso")
+
     }
 
     React.useEffect(() => {

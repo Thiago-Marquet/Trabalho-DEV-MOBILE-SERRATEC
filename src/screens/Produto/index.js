@@ -22,16 +22,16 @@ const PageProduto = ({ route, navigation }) => {
             <View style={{ padding: 10}}>
                 <View style={{ borderStyle: 'solid', borderColor: 'black', borderWidth: 1 }}>
                     <Image style={{ height: 300, width: 300 }} source={{ uri: produto.foto }}></Image>
-                    <Text>{produtoEscolhido.nome}</Text>
-                    <Text>R$ {produtoEscolhido.valorUnitario}</Text>
+                    <Text>{produto.nome}</Text>
+                    <Text>R$ {produto.valorUnitario}</Text>
                     <Text>{produto.categoria.nome}</Text>
                 </View>
                 <UpdateProduto
-                    nome={produtoEscolhido.nome}
-                    valor={produtoEscolhido.valorUnitario}
+                    nome={produto.nome}
+                    valor={produto.valorUnitario}
                     categoria={produto.categoria.nome}
-                    foto={produtoEscolhido.foto}
-                    id={produtoEscolhido.id}
+                    foto={produto.foto}
+                    id={produto.id}
                 />
                 <DeleteProduto
                     nome={produtoEscolhido.nome}

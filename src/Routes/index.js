@@ -13,7 +13,7 @@ const Routes = () => {
   useEffect(() => {
     if (user) return;
     const handleRefresh = async () => {
-      const userBd = await AsyncStorage.getItem("@Cartas:user");
+      const userBd = await AsyncStorage.getItem("@Admin:user");
       await new Promise((resolve) => setTimeout(resolve, 2000));
       if (userBd) {
         setUser(JSON.parse(userBd));

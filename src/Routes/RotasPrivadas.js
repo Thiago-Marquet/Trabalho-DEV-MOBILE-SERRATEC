@@ -10,7 +10,23 @@ const Stack = createNativeStackNavigator();
 const RotasPrivadas = () => {
   
   return (
-    <MyDrawer/>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Drawer"
+        component={MyDrawer}
+        options={{ headerShown: false}}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: true}}
+      />
+      <Stack.Screen
+        name="PagProduto"
+        component={PageProduto}
+        options={{ headerShown: true, title: 'Produto' }}
+      />
+  </Stack.Navigator>
   );
 };
 

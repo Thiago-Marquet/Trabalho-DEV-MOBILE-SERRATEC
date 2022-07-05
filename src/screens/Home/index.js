@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native';
 import * as React from 'react';
 import { SafeAreaView, FlatList, StyleSheet, Text, StatusBar, Image, TouchableOpacity } from 'react-native';
 import  {ApiContext}  from '../../context/ApiContext';
@@ -5,14 +6,15 @@ import  {ApiContext}  from '../../context/ApiContext';
 
 const Home = ({ navigation }) => {
 
-  const {produto, getProduto} = React.useContext(ApiContext)
+  const {produto, getProduto} = React.useContext(ApiContext);
+  const isFocused = useIsFocused();
 
   React.useEffect(() => {
     getProduto();
-  }, []);
+  }, [isFocused]);
 
   const Item = ({ title, img, valor, categoria, produto}) => (
-    <TouchableOpacity value={produto} onPress={() => navigation.navigate("Produto",{
+    <TouchableOpacity value={produto} onPress={() => navigation.navigate("PagProduto",{
       produto: produto
     })} style={styles.item}>
       <Image style={{ height: 200, width: 200 }} source={{ uri: img }}></Image>

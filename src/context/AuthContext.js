@@ -10,12 +10,10 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const signIn = async () => {
-    console.log("LOGINNNN");
     const { user, token } = await login();
 
     if (user && token) {
       setUser(user);
-      //para JWT
       api.defaults.headers["Authorization"] = `Bearer ${token}`;
       await AsyncStorage.setItem("@Admin:user", JSON.stringify(user));
       await AsyncStorage.setItem("@Admin:token", token);

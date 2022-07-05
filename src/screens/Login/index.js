@@ -1,15 +1,21 @@
 import { KeyboardAvoidingView,View,Text,Image,TextInput,TouchableOpacity,Animated,Keyboard} from "react-native";
 import { useContext, useState, useEffect } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { AuthContext} from "../../context/AuthContext";
 import styles from '../Login/styles'
 
 const Login = () => {
-  const { signIn } = useAuth();
-  const [info, setInfo] = useState("");
+
+  const{user, signIn} = useContext(AuthContext)
+
+  const [email, setEmail] = useState("");
 
   const handleEntrar = () => {
     signIn();
   };
+
+  const verificaLogin = () => {
+
+  }
 
 
   return (
@@ -25,8 +31,8 @@ const Login = () => {
             autoCapitalize="none"
             autoCompleteType="email"
             autoCorrect={false}
-            value={info}
-            onChangeText={setInfo}
+            value={email}
+            onChangeText={setEmail}
           />
 
           <TextInput

@@ -20,6 +20,7 @@ const DeleteProduto = (props) => {
         setProduto(produtosFiltrados);
         
         alert("Produto deletado com sucesso!")
+        props.navigation.goBack('Home')
     }
 
     return(
@@ -37,15 +38,15 @@ const DeleteProduto = (props) => {
                         <Text>Deseja deletar {props.nome}?</Text>        
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}
-                        >
-                            <Text style={styles.textStyle}>Fechar</Text>
-                        </Pressable>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
                             onPress={deletarProduto}
                         >
                             <Text style={styles.textStyle}>Deletar</Text>
+                        </Pressable>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                        >
+                            <Text style={styles.textStyle}>Cancelar</Text>
                         </Pressable>
                     </View>
                 </View>

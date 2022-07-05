@@ -6,7 +6,7 @@ import { ApiContext } from '../../context/ApiContext';
 import RNRestart from 'react-native-restart';
 
 
-const UpdateProduto = (props,{navigation}) => {
+const UpdateProduto = (props) => {
 
     const{getProduto,categorias, getCategoria} = React.useContext(ApiContext)
 
@@ -45,7 +45,7 @@ const UpdateProduto = (props,{navigation}) => {
         console.log(produtoEditado)
         
         alert("Produto atualizado com sucesso")
-
+        props.navigation.goBack('Home')
     }
 
     React.useEffect(() => {
@@ -113,18 +113,17 @@ const UpdateProduto = (props,{navigation}) => {
                             }}
                         >
                         </SelectDropdown>
-                        
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}
-                        >
-                            <Text style={styles.textStyle}>Fechar</Text>
-                        </Pressable>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={salvarProduto}
                         >
                             <Text style={styles.textStyle}>Salvar</Text>
+                        </Pressable>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                        >
+                            <Text style={styles.textStyle}>Cancelar</Text>
                         </Pressable>
                     </View>
                 </View>

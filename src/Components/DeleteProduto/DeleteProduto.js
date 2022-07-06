@@ -37,7 +37,6 @@ const DeleteProduto = (props) => {
 
                         <Text style={{ color: 'white', fontSize: 16, marginBottom: 10 }}>
                             Deseja deletar {props.nome}?
-                            (Essa ação não poderá ser revertida!)
                         </Text>
                         <View>
                             <Text style={{ color: 'white', fontSize: 16, marginBottom: 10 }}>

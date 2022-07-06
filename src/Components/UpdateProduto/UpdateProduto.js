@@ -23,14 +23,14 @@ const UpdateProduto = (props) => {
         if (nomeProduto === "" || valor === "" || foto === "" || categoria === "") {
             return Alert.alert('Existem campos inválidos')
         }
-        if (isNaN(valor)) {
+        if(isNaN(valor.replace(/,/g,'.'))){
             return Alert.alert('O valor do produto não está em formato válido');
         }
 
         const produtoData = {
             id: id,
             nome: nomeProduto,
-            valorUnitario: valor,
+            valorUnitario: valor.replace(/,/g,'.'),
             categoria: categoria,
             foto: foto
         }

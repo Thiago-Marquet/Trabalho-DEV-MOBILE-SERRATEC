@@ -8,20 +8,19 @@ import { AuthContext } from '../../context/AuthContext';
 const Home = ({ navigation }) => {
 
   const { produto, getProduto } = React.useContext(ApiContext);
-  const {loading, setLoading} = React.useContext(AuthContext);
   const isFocused = useIsFocused();
 
   React.useEffect(() => {
     getProduto();
   }, [isFocused]);
 
-  const Item = ({ title, img, produto }) => (
+  const Item = ({ nome, img, produto }) => (
     <View style={styles.item}>
       <TouchableOpacity onPress={() => navigation.navigate("PagProduto", {
         produto: produto
       })}>
         <ImagedCarouselCard
-          text={title}
+          text={nome}
           width={350}
           height={350}
           textStyle={{ color: 'white', fontSize: 20, marginLeft: 10, fontWeight: '900', letterSpacing: 2 }}
@@ -33,17 +32,20 @@ const Home = ({ navigation }) => {
 
   const renderItem = ({ item }) => (
     <>
-      <Item produto={item} title={item.nome} img={item.foto} categoria={item.categoria} valor={item.valorUnitario} />
+      <Item produto={item} nome={item.nome} img={item.foto} categoria={item.categoria} valor={item.valorUnitario} />
     </>
   );
 
   return (
     <>
       <SafeAreaView style={styles.container}>
+        {produto ?
           <FlatList
             data={produto}
             renderItem={renderItem}
-          />
+          /> :
+          <ActivityIndicator size={'large'} />
+        }
       </SafeAreaView>
     </>
   );

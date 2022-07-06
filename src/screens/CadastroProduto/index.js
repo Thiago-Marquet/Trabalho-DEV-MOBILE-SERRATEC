@@ -14,26 +14,25 @@ const CadastroProduto = ({navigation}) =>{
     const [valor, setValor] = React.useState('');
     const [foto, setFoto] = React.useState('');
 
-    const [produto, setProduto] = React.useState([]);
     const isFocused = useIsFocused();
 
     const createProduto = async () => {
         if (nomeProduto === "" || valor === "" || foto === "" || categoria === "") {
             return Alert.alert('Existem campos inválidos')
         }
-        if(isNaN(valor)){
+        if(isNaN(valor.replace(/,/g,'.'))){
             return Alert.alert('O valor do produto não está em formato válido');
         }
         const novoProduto = {
             nome: nomeProduto,
-            valorUnitario: valor,
+            valorUnitario: valor.replace(/,/g, '.'),
             categoria: categoria,
             foto: foto
         }
-        alert("Produto cadastrado com sucesso");
-        const { data } = await api.post('/produtos', novoProduto)
+    
+        await api.post('/produtos', novoProduto)
 
-        setProduto([...produto, data])
+        alert("Produto cadastrado com sucesso");
 
         setNomeProduto('')
         setValor('')
@@ -50,9 +49,14 @@ const CadastroProduto = ({navigation}) =>{
     return(
         <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={1}>
             <ScrollView style={styles.container}>
-                <TextInput style={styles.inputs} placeholder='Nome do Produto' defaultValue={nomeProduto} onChangeText={setNomeProduto}/>
                 
-                <TextInput style={styles.inputs} keyboardType='numeric' defaultValue={valor} onChangeText={setValor} placeholder='Valor do produto'/>
+                <TextInput style={styles.inputs} placeholder='Nome do Produto' defaultValue={nomeProduto} 
+                    onChangeText={setNomeProduto}
+                />
+                
+                <TextInput style={styles.inputs} keyboardType='numeric' defaultValue={valor} 
+                    onChangeText={setValor} placeholder='Valor do produto'
+                />
 
                 <SelectDropdown
                     buttonStyle={{ height: 30,
@@ -79,8 +83,12 @@ const CadastroProduto = ({navigation}) =>{
                 >
                 </SelectDropdown>
 
-                <Image source={foto ? {uri: foto} : require('../../../assets/foto-placeholder.png')} style={styles.foto} />
+                <Image source={foto ? {uri: foto} : require('../../../assets/foto-placeholder.png')} 
+                    style={styles.foto} 
+                />
+                
                 <TextInput style={styles.inputs} placeholder='Foto URL' defaultValue={foto} onChangeText={setFoto}/>
+                
                 <TouchableOpacity style={styles.button} title='Cadastrar' onPress={createProduto}>
                     <Text style={{fontSize: 24,letterSpacing: 2, color:'white'}}>Cadastrar</Text>
                 </TouchableOpacity>

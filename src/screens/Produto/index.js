@@ -7,11 +7,13 @@ import UpdateProduto from '../../Components/UpdateProduto/UpdateProduto';
 const PageProduto = ({ route, navigation }) => {
 
     const { produto } = route.params
-    const focado = useIsFocused();
+    const isFocused = useIsFocused();
+    const [valor, setValor] = React.useState('')
 
     React.useEffect(() => {
         produto
-    }, [focado]);
+        setValor(parseFloat(produto.valorUnitario.toString()).toFixed(2))
+    }, [isFocused]);
 
     return (
         <>
@@ -19,7 +21,7 @@ const PageProduto = ({ route, navigation }) => {
                 <View style={styles.containerProduto}>
                     <Image style={styles.foto} source={produto.foto ? { uri: produto.foto } : null}></Image>
                     <Text style={styles.text}>PRODUTO: {produto.nome}</Text>
-                    <Text style={styles.text}>VALOR: R$ {produto.valorUnitario}</Text>
+                    <Text style={styles.text}>VALOR: R$ {valor.replace(/\./g, ',')}</Text>
                     <Text style={styles.text}>CATEGORIA: {produto.categoria.nome}</Text>
                 </View>
                 <UpdateProduto

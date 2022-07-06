@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../services/api";
 import { login } from "../services/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -18,6 +18,7 @@ const AuthProvider = ({ children }) => {
       await AsyncStorage.setItem("@Admin:user", JSON.stringify(user));
       await AsyncStorage.setItem("@Admin:token", token);
     }
+    setLoading(false)
   };
 
   return (

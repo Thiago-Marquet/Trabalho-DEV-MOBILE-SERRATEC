@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { TextInput, SafeAreaView, View, FlatList, StyleSheet, StatusBar,Modal ,Image, Pressable, Button, Text, Alert} from 'react-native';
+import { TextInput,View,StyleSheet,Modal ,Image, Pressable,Text, Alert} from 'react-native';
 import api from '../../services/api';
 import SelectDropdown from 'react-native-select-dropdown';
 import { ApiContext } from '../../context/ApiContext';
-import RNRestart from 'react-native-restart';
-
 
 const UpdateProduto = (props) => {
 
@@ -49,7 +47,6 @@ const UpdateProduto = (props) => {
         })
     
         setProduto(produtoEditado)
-        console.log(produtoEditado)
         
         alert("Produto atualizado com sucesso")
         props.navigation.goBack('Home')
@@ -77,8 +74,8 @@ const UpdateProduto = (props) => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.modalText}>Atualizar Produto</Text>
-                        <View style={{height: 250, width: 300, backgroundColor: 'white'}}>
-                            <Image source={{uri : foto}} style={{height: 250, width: 250}}/>
+                        <View style={{height: 250, width: 250, backgroundColor: 'white'}}>
+                            <Image source={foto ? {uri: foto} : require('../../../assets/foto-placeholder.png')} style={{height: 250, width: 250}}/>
                         </View>
                         <TextInput defaultValue={props.nome}
                             onChangeText={setNomeProduto}
@@ -105,7 +102,6 @@ const UpdateProduto = (props) => {
                             defaultButtonText="Categoria ⏬"
                             data={categorias}
                             onSelect={(selectedItem) => {
-                                console.log(selectedItem.nome)
                                 setCategoria(selectedItem.nome)
                             }}
                             buttonTextAfterSelection={(selectedItem) => {

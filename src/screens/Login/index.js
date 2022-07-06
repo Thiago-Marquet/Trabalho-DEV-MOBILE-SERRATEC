@@ -1,24 +1,33 @@
-import { KeyboardAvoidingView,View,Text,Image,TextInput,TouchableOpacity,Animated,Keyboard, Alert} from "react-native";
-import { useContext, useState, useEffect } from "react";
+import {View,Text,Image,TextInput,TouchableOpacity,ActivityIndicator,Alert} from "react-native";
+import { useContext, useState} from "react";
 import { AuthContext} from "../../context/AuthContext";
 import styles from '../Login/styles'
 import { login } from "../../services/auth";
 
 const Login = () => {
 
-  const{signIn} = useContext(AuthContext)
+  const{signIn, loading, setLoading} = useContext(AuthContext)
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
   const verificaLogin = async () => {
+    setLoading(true)
     const { user } = await login();
     if(user.email !== email || user.pass !== senha){
+      setLoading(false)
       return Alert.alert("Email ou senha incorretos")
     }
     signIn();
   }
 
+  if(loading){
+    return(
+      <View style={{ flex: 1, justifyContent: "center", backgroundColor: "#181818" }}>
+          <ActivityIndicator size="large" color={'#FF5500'}/>
+      </View>
+    )
+  }
 
   return (
     <>

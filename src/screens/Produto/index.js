@@ -1,10 +1,8 @@
 import { useIsFocused } from '@react-navigation/native';
 import * as React from 'react';
-import { SafeAreaView, View, ScrollView, FlatList, StyleSheet, StatusBar,Modal ,Image, Pressable, Button, Text, Alert} from 'react-native';
-import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
+import {View, ScrollView,StyleSheet,Image,Text} from 'react-native';
 import DeleteProduto from '../../Components/DeleteProduto/DeleteProduto';
 import UpdateProduto from '../../Components/UpdateProduto/UpdateProduto';
-import ImagedCarouselCard from "react-native-imaged-carousel-card";
 
 const PageProduto = ({ route,navigation }) => {
 
@@ -55,14 +53,16 @@ const styles = StyleSheet.create({
     },
     foto:{
         alignSelf: 'center',
-        height: 300, 
-        width: 300,
-        marginBottom: 15
+        height: 250, 
+        width: 250,
+        marginBottom: 15,
+        borderRadius: 5
     },
     text:{
         color: 'white',
         alignSelf: 'center',
         fontSize: 20,
-        letterSpacing: 2
+        letterSpacing: 2,
+        marginBottom: 15
     }
 });

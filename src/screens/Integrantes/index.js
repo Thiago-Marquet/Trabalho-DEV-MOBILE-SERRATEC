@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Modal, Button, TouchableHighlight, Linking , Text, SafeAreaView, Image  } from 'react-native';
+import React from "react";
+import { View, StyleSheet,Linking ,Image  } from 'react-native';
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import ImagedCarouselCard from "react-native-imaged-carousel-card";
 

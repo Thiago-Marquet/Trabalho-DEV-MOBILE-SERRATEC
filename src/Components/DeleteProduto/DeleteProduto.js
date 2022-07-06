@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { TextInput, SafeAreaView, View, FlatList, StyleSheet, StatusBar,Modal ,Image, Pressable, Button, Text, Alert} from 'react-native';
+import { View, StyleSheet,Modal ,Pressable, Text} from 'react-native';
 import api from '../../services/api';
-import SelectDropdown from 'react-native-select-dropdown';
-import { ApiContext } from '../../context/ApiContext';
+
 
 
 const DeleteProduto = (props) => {
@@ -96,6 +95,7 @@ const styles = StyleSheet.create({
         width: "100%",
         backgroundColor: "#FF5500",
         height: 50,
+        marginBottom: 25
     },
     buttonClose: {
         marginLeft: 5,

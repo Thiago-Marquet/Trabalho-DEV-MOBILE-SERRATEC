@@ -1,16 +1,23 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import RotasPrivadas from "./RotasPrivadas";
 import RotasPublicas from "./RotasPublicas";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, View } from "react-native";
-import MyDrawer from "./Drawer";
+import { ActivityIndicator, View} from "react-native";
+import { login } from "../services/auth";
 
 const Routes = () => {
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
+  const [nome, setNome] = useState('');
+
+  const setNomeUser = async () =>{
+    const {user} = await login();
+    setNome(user.name)
+  }
 
   useEffect(() => {
+    setNomeUser()
     if (user) return;
     const handleRefresh = async () => {
       const userBd = await AsyncStorage.getItem("@Admin:user");
@@ -25,8 +32,8 @@ const Routes = () => {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center" }}>
-        <ActivityIndicator size="large" />
+      <View style={{ flex: 1, justifyContent: "center", alignItems:'center', backgroundColor: "#181818" }}>
+        <ActivityIndicator size="large" color={'#FF5500'}/>
       </View>
     );
   }

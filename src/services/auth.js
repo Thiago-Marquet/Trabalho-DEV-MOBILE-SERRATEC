@@ -3,7 +3,7 @@ export const login = () => {
     setTimeout(() => {
       resolve({
         user: {
-          name: "nome",
+          name: "Usuário",
           email: "email@gmail.com",
           pass: "123"
         },

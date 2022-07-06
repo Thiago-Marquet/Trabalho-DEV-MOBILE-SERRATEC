@@ -1,22 +1,26 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
-import { useIsFocused, StackActions } from "@react-navigation/native";
-import React, { useContext } from "react";
-import { color } from "react-native-reanimated";
+import React, { useContext} from "react";
+import {Image} from 'react-native'
 import { AuthContext } from "../context/AuthContext";
 import CadastroProduto from "../screens/CadastroProduto";
 import Home from "../screens/Home";
 import Integrantes from "../screens/Integrantes";
-import Login from "../screens/Login";
-import PageProduto from "../screens/Produto";
-import RotasPrivadas from "./RotasPrivadas";
-import RotasPublicas from "./RotasPublicas";
+
 
 const Drawer = createDrawerNavigator();
 
 const MyDrawer = () => {
 
-  const {setUser} = useContext(AuthContext);
+  const {setUser,setLoading} = useContext(AuthContext);
+
+  const logoutHandler = () =>{
+    setLoading(true)
+    setTimeout(() => {
+      setUser('')
+      setLoading(false)
+    }, 2000);
+  }
 
   return (
     <Drawer.Navigator screenOptions={{
@@ -31,13 +35,18 @@ const MyDrawer = () => {
       drawerContent={(props) => {return(
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props}/>
-        <DrawerItem inactiveTintColor='white' label="LogOut" onPress={
-          ()=> {
-            AsyncStorage.removeItem('@Admin:user')
-            AsyncStorage.removeItem('@Admin:token')
-            setUser('');
-          }
-        }/>  
+        <DrawerItem inactiveTintColor='white' label="Logout" 
+          icon={() => { return(<Image style={{width: 20, height: 20, marginRight: -20}} 
+            source={require('../../assets/logout-icon.png')}/>)}} 
+          
+          onPress={
+            ()=> {
+              AsyncStorage.removeItem('@Admin:user')
+              AsyncStorage.removeItem('@Admin:token')
+              logoutHandler()
+            }}
+        />  
+
       </DrawerContentScrollView>
     )}}>
       <Drawer.Screen name="Home" component={Home} />

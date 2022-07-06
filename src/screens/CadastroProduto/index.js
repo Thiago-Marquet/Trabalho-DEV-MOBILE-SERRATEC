@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ApiContext } from '../../context/ApiContext';
 import api from "../../services/api";
 import SelectDropdown from 'react-native-select-dropdown';
-import { ScrollView,View, Image, Text, Alert, StyleSheet, TextInput, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import { ScrollView,Image, Text, Alert, StyleSheet, TextInput, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 
 const CadastroProduto = ({navigation}) =>{
@@ -45,7 +45,6 @@ const CadastroProduto = ({navigation}) =>{
 
     React.useEffect(() => {
         getCategoria()
-        console.log(nomeProduto)
     }, [isFocused]);
 
     return(
@@ -62,7 +61,6 @@ const CadastroProduto = ({navigation}) =>{
                     defaultButtonText="Selecione Categoria 🔽"
                     data={categorias}
                     onSelect={(selectedItem) => {
-                        console.log(selectedItem.nome)
                         setCategoria(selectedItem.nome)
                     }}
                     buttonTextAfterSelection={(selectedItem) => {
@@ -74,7 +72,7 @@ const CadastroProduto = ({navigation}) =>{
                 >
                 </SelectDropdown>
 
-                <Image source={foto ? { uri: foto } : null} style={styles.foto} />
+                <Image source={foto ? {uri: foto} : require('../../../assets/foto-placeholder.png')} style={styles.foto} />
                 <TextInput style={styles.inputs} placeholder='Foto URL' defaultValue={foto} onChangeText={setFoto}/>
                 <TouchableOpacity style={styles.button} title='Cadastrar' onPress={createProduto}>
                     <Text style={{fontSize: 24,letterSpacing: 2, color:'white'}}>Cadastrar</Text>

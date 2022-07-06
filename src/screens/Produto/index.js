@@ -54,9 +54,6 @@ const styles = StyleSheet.create({
     
     },
     foto:{
-        borderStyle: 'solid', 
-        borderColor: '#FF5500', 
-        borderWidth: 3,
         alignSelf: 'center',
         height: 300, 
         width: 300,

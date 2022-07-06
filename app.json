@@ -7,9 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash2.png",
+      "image": "./assets/logoCarrotech.png",
       "resizeMode": "contain",
-      "backgroundColor": "#393B39"
+      "backgroundColor": "#181818"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

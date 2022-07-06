@@ -24,7 +24,7 @@ const Login = () => {
     <>
       <View style={styles.container}>
         <View style={styles.containerLogo}>
-          
+          <Image source={require('../../../assets/logoCarrotech.png')} style={{width: 300, height:50, marginBottom: 25}}/>
           <TextInput
             style={styles.input}
             placeholder="Email"

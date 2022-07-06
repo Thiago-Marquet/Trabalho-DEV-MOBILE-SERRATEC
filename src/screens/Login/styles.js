@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFF'
+    backgroundColor: '#181818'
   },
 
   containerLogo: {
@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    backgroundColor: '#757474',
+    backgroundColor: '#DFD8DB',
     width: 300,
     marginBottom: 15,
-    color: 'white',
+    color: 'black',
     fontSize: 22,
     borderRadius: 7,
     padding: 10

@@ -83,31 +83,26 @@ const UpdateProduto = (props) => {
                         <TextInput defaultValue={props.nome}
                             onChangeText={setNomeProduto}
                             maxLength={40} 
-                            style={{backgroundColor: 'white', 
-                            width:300, 
-                            padding: 5}}>
+                            style={styles.inputs}
+                        >
                         </TextInput>
                         <TextInput
+                            style={styles.inputs}
                             defaultValue={valor.toString()}
                             onChangeText={setValor}
                             keyboardType='numeric'
-                            style={{backgroundColor: 'white', 
-                            width:300, 
-                            padding: 5}}
                         >
                         </TextInput>
                         <TextInput defaultValue={props.foto}
                             onChangeText={setFoto}
-                            style={{backgroundColor: 'white', 
-                            width:300, 
-                            padding: 5}}
+                            style={styles.inputs}
                         >
                         </TextInput>
                         <SelectDropdown
-                            buttonStyle={{width:300, backgroundColor:'#181818'}}
+                            buttonStyle={{height: 35,width:300, backgroundColor:'#FF5500'}}
                             buttonTextStyle={{color:'#ffff'}}
                             defaultValue={categoria}
-                            defaultButtonText="Selecione A Categoria"
+                            defaultButtonText="Categoria ⏬"
                             data={categorias}
                             onSelect={(selectedItem) => {
                                 console.log(selectedItem.nome)
@@ -121,18 +116,20 @@ const UpdateProduto = (props) => {
                             }}
                         >
                         </SelectDropdown>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={salvarProduto}
-                        >
-                            <Text style={styles.textStyle}>Salvar</Text>
-                        </Pressable>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}
-                        >
-                            <Text style={styles.textStyle}>Cancelar</Text>
-                        </Pressable>
+                        <View style={{flex: 1, flexDirection: 'row'}}>
+                            <Pressable
+                                style={[styles.button, styles.buttonSalvar]}
+                                onPress={salvarProduto}
+                            >
+                                <Text style={styles.textStyle}>Salvar</Text>
+                            </Pressable>
+                            <Pressable
+                                style={[styles.button, styles.buttonCancelar]}
+                                onPress={() => setModalVisible(!modalVisible)}
+                            >
+                                <Text style={styles.textStyle}>Cancelar</Text>
+                            </Pressable>
+                        </View>
                     </View>
                 </View>
             </Modal>
@@ -153,11 +150,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop:65,
+        marginTop:25,
     },
     modalView: {
-        margin: 20,
-        backgroundColor: "grey",
+        marginBottom:35,
+        backgroundColor: "#282828",
         borderRadius: 20,
         padding: 35,
         alignItems: "center",
@@ -177,11 +174,21 @@ const styles = StyleSheet.create({
     },
     buttonOpen: {
         width: "100%",
-        backgroundColor: "#181818",
+        backgroundColor: "#FF5500",
         height: 50,
     },
-    buttonClose: {
-        backgroundColor: "#2196F3",
+    buttonSalvar: {
+        marginTop: 10,
+        width:150,
+        height: 50,
+        backgroundColor: "#FF0000",
+    },
+    buttonCancelar: {
+        marginLeft:5,
+        marginTop: 10,
+        width:150,
+        height: 50,
+        backgroundColor: "#93D346",
     },
     textStyle: {
         padding: 5,
@@ -190,7 +197,18 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     modalText: {
+        fontSize: 20,
+        letterSpacing: 2,
+        color: 'white',
         marginBottom: 15,
         textAlign: "center"
+    },
+    inputs: {
+        width:300,
+        padding: 5,
+        backgroundColor: 'white',
+        borderTopColor: 'black',
+        borderTopWidth: 1,
+        margin: 3
     },
 });

@@ -5,70 +5,70 @@ import ImagedCarouselCard from "react-native-imaged-carousel-card";
 const Integrantes = () => {
    
     return (
-        <View style={styles.container}> 
-        <View><Image
-           style={styles.scanner}
-            source={require('../../../assets/logo.png')}
+        <View style={styles.container}>
+            <View><Image
+                style={styles.scanner}
+                source={require('../../../assets/logo.png')}
             /></View>
             <View style={{ padding: 10 }}>
-            <TouchableHighlight onPress={() => {Linking.openURL('https://github.com/viniciusofc')}}>
-                <ImagedCarouselCard style={{ padding: 10 }}
-                    text={'VINICIUS REIS Full Stack'}
-                    width={160}
-                    height={160}
-                    shadowColor="#051934"
-                    source={require('../../../assets/logo.png')} />
-                    </TouchableHighlight>
+                <TouchableHighlight onPress={() => { Linking.openURL('https://github.com/viniciusofc') }}>
+                    <ImagedCarouselCard style={{ padding: 10 }}
+                        text={'VINICIUS REIS Full Stack'}
+                        width={160}
+                        height={160}
+                        shadowColor="#051934"
+                        source={require('../../../assets/logo.png')} />
+                </TouchableHighlight>
             </View>
             <View style={{ padding: 10 }}>
-            <TouchableHighlight onPress={() => {Linking.openURL('https://github.com/viniciusofc')}}>
-                <ImagedCarouselCard
-                    text={'VINICIUS REIS Full Stack'}
-                    width={160}
-                    height={160}
-                    shadowColor="#051934"
-                    source={require('../../../assets/logo.png')} />
-                      </TouchableHighlight>
+                <TouchableHighlight onPress={() => { Linking.openURL('https://github.com/viniciusofc') }}>
+                    <ImagedCarouselCard
+                        text={'VINICIUS REIS Full Stack'}
+                        width={160}
+                        height={160}
+                        shadowColor="#051934"
+                        source={require('../../../assets/logo.png')} />
+                </TouchableHighlight>
             </View>
             <View style={{ padding: 10 }}>
-            <TouchableHighlight onPress={() => {Linking.openURL('https://github.com/viniciusofc')}}>
-                <ImagedCarouselCard
-                    text={'VINICIUS REIS'}
-                    width={160}
-                    height={160}
-                    shadowColor="#051934"
-                    source={require('../../../assets/logo.png')} />
-                      </TouchableHighlight>
+                <TouchableHighlight onPress={() => { Linking.openURL('https://github.com/viniciusofc') }}>
+                    <ImagedCarouselCard
+                        text={'VINICIUS REIS'}
+                        width={160}
+                        height={160}
+                        shadowColor="#051934"
+                        source={require('../../../assets/logo.png')} />
+                </TouchableHighlight>
             </View>
             <View style={{ padding: 10 }}>
-            <TouchableHighlight onPress={() => {Linking.openURL('https://github.com/viniciusofc')}}>
-                <ImagedCarouselCard
-                    text={'VINICIUS REIS Full Stack'}
-                    width={160}
-                    height={160}
-                    shadowColor="#051934"
-                    source={require('../../../assets/logo.png')} />
-                      </TouchableHighlight>
+                <TouchableHighlight onPress={() => { Linking.openURL('https://github.com/viniciusofc') }}>
+                    <ImagedCarouselCard
+                        text={'VINICIUS REIS Full Stack'}
+                        width={160}
+                        height={160}
+                        shadowColor="#051934"
+                        source={require('../../../assets/logo.png')} />
+                </TouchableHighlight>
             </View>
             <View style={{ padding: 10 }}>
-            <TouchableHighlight onPress={() => {Linking.openURL('https://github.com/viniciusofc')}}>
-                <ImagedCarouselCard
-                    text={'VINICIUS REIS Full Stack'}
-                    width={160}
-                    height={160}
-                    shadowColor="#051934"
-                    source={require('../../../assets/logo.png')} />
-                      </TouchableHighlight>
+                <TouchableHighlight onPress={() => { Linking.openURL('https://github.com/viniciusofc') }}>
+                    <ImagedCarouselCard
+                        text={'VINICIUS REIS Full Stack'}
+                        width={160}
+                        height={160}
+                        shadowColor="#051934"
+                        source={require('../../../assets/logo.png')} />
+                </TouchableHighlight>
             </View>
             <View style={{ padding: 10 }}>
-            <TouchableHighlight onPress={() => {Linking.openURL('https://github.com/viniciusofc')}}>
-                <ImagedCarouselCard
-                    text={'VINICIUS REIS Full Stack'}
-                    width={160}
-                    height={160}
-                    shadowColor="#051934"
-                    source={require('../../../assets/logo.png')} />
-                      </TouchableHighlight>
+                <TouchableHighlight onPress={() => { Linking.openURL('https://github.com/viniciusofc') }}>
+                    <ImagedCarouselCard
+                        text={'VINICIUS REIS Full Stack'}
+                        width={160}
+                        height={160}
+                        shadowColor="#051934"
+                        source={require('../../../assets/logo.png')} />
+                </TouchableHighlight>
             </View>
         </View>
     )

@@ -10,7 +10,12 @@ const Stack = createNativeStackNavigator();
 const RotasPrivadas = () => {
   
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ 
+        headerShown: true, 
+        title: 'Produto', 
+        headerStyle: {backgroundColor: "#FF5500"},
+        headerTitleStyle: {color: 'white', fontSize: 26, letterSpacing: 3}
+      }}>
       <Stack.Screen
         name="Drawer"
         component={MyDrawer}
@@ -24,7 +29,6 @@ const RotasPrivadas = () => {
       <Stack.Screen
         name="PagProduto"
         component={PageProduto}
-        options={{ headerShown: true, title: 'Produto' }}
       />
   </Stack.Navigator>
   );

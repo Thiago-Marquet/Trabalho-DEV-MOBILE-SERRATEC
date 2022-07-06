@@ -1,9 +1,10 @@
 import { useIsFocused } from '@react-navigation/native';
 import * as React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, StatusBar,Modal ,Image, Pressable, Button, Text, Alert} from 'react-native';
+import { SafeAreaView, View, ScrollView, FlatList, StyleSheet, StatusBar,Modal ,Image, Pressable, Button, Text, Alert} from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 import DeleteProduto from '../../Components/DeleteProduto/DeleteProduto';
 import UpdateProduto from '../../Components/UpdateProduto/UpdateProduto';
+import ImagedCarouselCard from "react-native-imaged-carousel-card";
 
 const PageProduto = ({ route,navigation }) => {
 
@@ -16,12 +17,12 @@ const PageProduto = ({ route,navigation }) => {
 
     return (
         <>
-            <View style={{ padding: 10}}>
-                <View style={{ borderStyle: 'solid', borderColor: 'black', borderWidth: 1 }}>
-                    <Image style={{ height: 300, width: 300 }} source={produto.foto ? {uri: produto.foto} : null}></Image>
-                    <Text>{produto.nome}</Text>
-                    <Text>R$ {produto.valorUnitario}</Text>
-                    <Text>{produto.categoria.nome}</Text>
+            <ScrollView style={styles.container}>
+                <View style={styles.containerProduto}>
+                    <Image style={styles.foto} source={produto.foto ? {uri: produto.foto} : null}></Image>
+                    <Text style={styles.text}>PRODUTO: {produto.nome}</Text>
+                    <Text style={styles.text}>VALOR: R$ {produto.valorUnitario}</Text>
+                    <Text style={styles.text}>CATEGORIA: {produto.categoria.nome}</Text>
                 </View>
                 <UpdateProduto
                     nome={produto.nome}
@@ -36,7 +37,7 @@ const PageProduto = ({ route,navigation }) => {
                     id={produto.id}
                     navigation={navigation}
                 />
-            </View>
+            </ScrollView>
         </>
     )
 }
@@ -44,5 +45,27 @@ const PageProduto = ({ route,navigation }) => {
 export default PageProduto;
 
 const styles = StyleSheet.create({
+    container:{
+        backgroundColor: '#181818',
+        height: "100%",
+        padding: 10,
+    },
+    containerProduto:{
     
+    },
+    foto:{
+        borderStyle: 'solid', 
+        borderColor: '#FF5500', 
+        borderWidth: 3,
+        alignSelf: 'center',
+        height: 300, 
+        width: 300,
+        marginBottom: 15
+    },
+    text:{
+        color: 'white',
+        alignSelf: 'center',
+        fontSize: 20,
+        letterSpacing: 2
+    }
 });

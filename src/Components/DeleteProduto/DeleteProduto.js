@@ -35,19 +35,21 @@ const DeleteProduto = (props) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>  
-                        <Text>Deseja deletar {props.nome}?</Text>        
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={deletarProduto}
-                        >
-                            <Text style={styles.textStyle}>Deletar</Text>
-                        </Pressable>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}
-                        >
-                            <Text style={styles.textStyle}>Cancelar</Text>
-                        </Pressable>
+                        <Text style={{color: 'white', fontSize: 16, marginBottom:10}}>Deseja deletar {props.nome}?</Text>
+                        <View style={{flexDirection:'row'}}>     
+                            <Pressable
+                                style={[styles.button, styles.buttonDeletar,{flex: 1}]}
+                                onPress={deletarProduto}
+                            >
+                                <Text style={styles.textStyle}>Deletar</Text>
+                            </Pressable>
+                            <Pressable
+                                style={[styles.button, styles.buttonClose,{flex:1}]}
+                                onPress={() => setModalVisible(!modalVisible)}
+                            >
+                                <Text style={styles.textStyle}>Cancelar</Text>
+                            </Pressable>
+                        </View> 
                     </View>
                 </View>
             </Modal>
@@ -68,11 +70,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 65,
+        marginTop: 15,
     },
     modalView: {
         margin: 20,
-        backgroundColor: "grey",
+        backgroundColor: "#282828",
         borderRadius: 20,
         padding: 35,
         alignItems: "center",
@@ -92,11 +94,15 @@ const styles = StyleSheet.create({
     },
     buttonOpen: {
         width: "100%",
-        backgroundColor: "#181818",
+        backgroundColor: "#FF5500",
         height: 50,
     },
     buttonClose: {
-        backgroundColor: "#2196F3",
+        marginLeft: 5,
+        backgroundColor: "#93D346",
+    },
+    buttonDeletar: {
+        backgroundColor: "#FF0000",
     },
     textStyle: {
         padding: 5,

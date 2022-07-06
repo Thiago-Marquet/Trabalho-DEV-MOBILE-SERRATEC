@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet,Modal ,Pressable, Text} from 'react-native';
+import { View, StyleSheet, Modal, Pressable, Text } from 'react-native';
 import api from '../../services/api';
 
 
@@ -8,21 +8,21 @@ const DeleteProduto = (props) => {
 
 
     const [produto, setProduto] = React.useState([]);
-    
+
     //MODAL---
     const [modalVisible, setModalVisible] = React.useState(false);
     //--------
 
-    const deletarProduto = async() => {
+    const deletarProduto = async () => {
         const { data: produtoExcluido } = await api.delete(`/produtos/${props.id}`)
-        const produtosFiltrados = produto.filter( prod => prod.id !== produtoExcluido.id)
+        const produtosFiltrados = produto.filter(prod => prod.id !== produtoExcluido.id)
         setProduto(produtosFiltrados);
-        
+
         alert("Produto deletado com sucesso!")
         props.navigation.goBack('Home')
     }
 
-    return(
+    return (
         <View style={styles.centeredView}>
             <Modal
                 animationType="slide"
@@ -33,29 +33,36 @@ const DeleteProduto = (props) => {
                 }}
             >
                 <View style={styles.centeredView}>
-                    <View style={styles.modalView}>  
-                        <Text style={{color: 'white', fontSize: 16, marginBottom:10}}>Deseja deletar {props.nome}?</Text>
-                        <View style={{flexDirection:'row'}}>     
+                    <View style={styles.modalView}>
+
+                        <Text style={{ color: 'white', fontSize: 16, marginBottom: 10 }}>
+                            Deseja deletar {props.nome}?
+                            (Essa ação não poderá ser revertida!)
+                        </Text>
+                        <View>
+                            <Text style={{ color: 'white', fontSize: 16, marginBottom: 10 }}>
+                                (Essa ação não poderá ser revertida!)
+                            </Text>
+                        </View>
+
+                        <View style={{ flexDirection: 'row' }}>
                             <Pressable
-                                style={[styles.button, styles.buttonDeletar,{flex: 1}]}
+                                style={[styles.button, styles.buttonDeletar, { flex: 1 }]}
                                 onPress={deletarProduto}
                             >
-                                <Text style={styles.textStyle}>Deletar</Text>
+                                <Text style={styles.textStyle}>SIM</Text>
                             </Pressable>
                             <Pressable
-                                style={[styles.button, styles.buttonClose,{flex:1}]}
+                                style={[styles.button, styles.buttonClose, { flex: 1 }]}
                                 onPress={() => setModalVisible(!modalVisible)}
                             >
-                                <Text style={styles.textStyle}>Cancelar</Text>
+                                <Text style={styles.textStyle}>NÃO</Text>
                             </Pressable>
-                        </View> 
+                        </View>
                     </View>
                 </View>
             </Modal>
-            <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}
-            >
+            <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
                 <Text style={styles.textStyle}>Deletar</Text>
             </Pressable>
         </View>
@@ -99,10 +106,10 @@ const styles = StyleSheet.create({
     },
     buttonClose: {
         marginLeft: 5,
-        backgroundColor: "#93D346",
+        backgroundColor: "#FF0000",
     },
     buttonDeletar: {
-        backgroundColor: "#FF0000",
+        backgroundColor: "#93D346",
     },
     textStyle: {
         padding: 5,

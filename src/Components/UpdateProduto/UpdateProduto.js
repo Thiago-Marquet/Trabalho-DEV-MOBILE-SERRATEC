@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { TextInput,View,StyleSheet,Modal ,Image, Pressable,Text, Alert} from 'react-native';
+import { TextInput, View, StyleSheet, Modal, Image, Pressable, Text, Alert } from 'react-native';
 import api from '../../services/api';
 import SelectDropdown from 'react-native-select-dropdown';
 import { ApiContext } from '../../context/ApiContext';
 
 const UpdateProduto = (props) => {
 
-    const {categorias, getCategoria} = React.useContext(ApiContext)
+    const { categorias, getCategoria } = React.useContext(ApiContext)
 
     const [categoria, setCategoria] = React.useState('');
     const [nomeProduto, setNomeProduto] = React.useState('');
@@ -14,40 +14,40 @@ const UpdateProduto = (props) => {
     const [foto, setFoto] = React.useState('');
     const [id, setId] = React.useState(props.id);
     const [produto, setProduto] = React.useState([]);
-    
+
     //MODAL---
     const [modalVisible, setModalVisible] = React.useState(false);
     //--------
 
-    const salvarProduto = async() => {
+    const salvarProduto = async () => {
         if (nomeProduto === "" || valor === "" || foto === "" || categoria === "") {
             return Alert.alert('Existem campos inválidos')
         }
-        if(isNaN(valor)){
+        if (isNaN(valor)) {
             return Alert.alert('O valor do produto não está em formato válido');
         }
-        
+
         const produtoData = {
             id: id,
             nome: nomeProduto,
             valorUnitario: valor,
-            categoria:categoria,
+            categoria: categoria,
             foto: foto
         }
-    
+
         const { data } = await api.put(`/produtos/${props.id}`, produtoData)
-    
-        const produtoEditado = produto.map( produto => {
-          if(produto.id === data.id) {
-            return {
-              id: produto.id,...produtoData
+
+        const produtoEditado = produto.map(produto => {
+            if (produto.id === data.id) {
+                return {
+                    id: produto.id, ...produtoData
+                }
             }
-          }
-          return produto
+            return produto
         })
-    
+
         setProduto(produtoEditado)
-        
+
         alert("Produto atualizado com sucesso")
         props.navigation.goBack('Home')
     }
@@ -61,7 +61,7 @@ const UpdateProduto = (props) => {
     }, []);
 
 
-    return(
+    return (
         <View style={styles.centeredView}>
             <Modal
                 animationType="slide"
@@ -73,13 +73,20 @@ const UpdateProduto = (props) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Atualizar Produto</Text>
-                        <View style={{height: 250, width: 250, backgroundColor: 'white'}}>
-                            <Image source={foto ? {uri: foto} : require('../../../assets/foto-placeholder.png')} style={{height: 250, width: 250}}/>
+                        
+                        <Text style={styles.modalText}>
+                            Atualizar Produto
+                        </Text>
+                        
+                        <View style={{ height: 250, width: 250, backgroundColor: 'white' }}>
+                            <Image 
+                                source={foto ? { uri: foto } : require('../../../assets/foto-placeholder.png')} 
+                                style={{ height: 250, width: 250 }} 
+                            />
                         </View>
                         <TextInput defaultValue={props.nome}
                             onChangeText={setNomeProduto}
-                            maxLength={40} 
+                            maxLength={40}
                             style={styles.inputs}
                         >
                         </TextInput>
@@ -96,8 +103,8 @@ const UpdateProduto = (props) => {
                         >
                         </TextInput>
                         <SelectDropdown
-                            buttonStyle={{height: 35,width:300, backgroundColor:'#FF5500'}}
-                            buttonTextStyle={{color:'#ffff'}}
+                            buttonStyle={{ height: 35, width: 300, backgroundColor: '#FF5500', borderRadius: 5 }}
+                            buttonTextStyle={{ color: '#ffff' }}
                             defaultValue={categoria}
                             defaultButtonText="Categoria ⏬"
                             data={categorias}
@@ -112,7 +119,7 @@ const UpdateProduto = (props) => {
                             }}
                         >
                         </SelectDropdown>
-                        <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
                             <Pressable
                                 style={[styles.button, styles.buttonSalvar]}
                                 onPress={salvarProduto}
@@ -146,10 +153,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop:25,
+        marginTop: 25,
     },
     modalView: {
-        marginBottom:35,
+        marginBottom: 35,
         backgroundColor: "#282828",
         borderRadius: 20,
         padding: 35,
@@ -175,16 +182,16 @@ const styles = StyleSheet.create({
     },
     buttonSalvar: {
         marginTop: 10,
-        width:150,
-        height: 50,
-        backgroundColor: "#FF0000",
-    },
-    buttonCancelar: {
-        marginLeft:5,
-        marginTop: 10,
-        width:150,
+        width: 150,
         height: 50,
         backgroundColor: "#93D346",
+    },
+    buttonCancelar: {
+        marginLeft: 5,
+        marginTop: 10,
+        width: 150,
+        height: 50,
+        backgroundColor: "#FF0000",
     },
     textStyle: {
         padding: 5,
@@ -200,7 +207,7 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     inputs: {
-        width:300,
+        width: 300,
         padding: 5,
         backgroundColor: 'white',
         borderTopColor: 'black',

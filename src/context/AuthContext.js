@@ -31,9 +31,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
-
-//Diminui uma importação no código =)
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  return context;
-};

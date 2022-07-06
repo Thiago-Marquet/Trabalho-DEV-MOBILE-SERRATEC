@@ -4,15 +4,15 @@ import { AuthContext } from "../context/AuthContext";
 import RotasPrivadas from "./RotasPrivadas";
 import RotasPublicas from "./RotasPublicas";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, View} from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { login } from "../services/auth";
 
 const Routes = () => {
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
   const [nome, setNome] = useState('');
 
-  const setNomeUser = async () =>{
-    const {user} = await login();
+  const setNomeUser = async () => {
+    const { user } = await login();
     setNome(user.name)
   }
 
@@ -32,15 +32,15 @@ const Routes = () => {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems:'center', backgroundColor: "#181818" }}>
-        <ActivityIndicator size="large" color={'#FF5500'}/>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: 'center', backgroundColor: "#181818" }}>
+        <ActivityIndicator size="large" color={'#FF5500'} />
       </View>
     );
   }
 
   return (
     <NavigationContainer>
-      {!!user ? <RotasPrivadas/> : <RotasPublicas/>}
+      {!!user ? <RotasPrivadas /> : <RotasPublicas />}
     </NavigationContainer>
   );
 };

@@ -55,7 +55,14 @@ const CadastroProduto = ({navigation}) =>{
                 <TextInput style={styles.inputs} keyboardType='numeric' defaultValue={valor} onChangeText={setValor} placeholder='Valor do produto'/>
 
                 <SelectDropdown
-                    buttonStyle={{ height: 30,width: "92%", backgroundColor: '#FF5500', alignSelf: 'center', marginTop:15 ,marginBottom: 15}}
+                    buttonStyle={{ height: 30,
+                        width: "92%", 
+                        backgroundColor: '#FF5500', 
+                        alignSelf: 'center', 
+                        marginTop:15 ,
+                        marginBottom: 15,
+                        borderRadius: 5
+                    }}
                     buttonTextStyle={{ color: '#ffff', letterSpacing: 2, fontSize: 20 }}
                     defaultValue={categoria}
                     defaultButtonText="Selecione Categoria 🔽"
@@ -79,11 +86,7 @@ const CadastroProduto = ({navigation}) =>{
                 </TouchableOpacity>
                 </ScrollView>
         </KeyboardAvoidingView>
-
-
     )
-
-
 }
 
 export default CadastroProduto;

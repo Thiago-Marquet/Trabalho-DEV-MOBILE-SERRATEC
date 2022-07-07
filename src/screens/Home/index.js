@@ -3,7 +3,6 @@ import * as React from 'react';
 import { SafeAreaView, FlatList, StyleSheet, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 import { ApiContext } from '../../context/ApiContext';
 import ImagedCarouselCard from "react-native-imaged-carousel-card";
-import { AuthContext } from '../../context/AuthContext';
 
 const Home = ({ navigation }) => {
 

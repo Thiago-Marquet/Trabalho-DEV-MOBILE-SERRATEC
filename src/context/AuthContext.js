@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import api from "../services/api";
 import { login } from "../services/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";

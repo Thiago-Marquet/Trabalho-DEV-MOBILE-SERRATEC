@@ -6,7 +6,6 @@ import api from '../../services/api';
 
 const DeleteProduto = (props) => {
 
-
     const [produto, setProduto] = React.useState([]);
 
     //MODAL---
